@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>
-        <img id="image1" src="watch.png" draggable="false" />
-        <div type="text" id="image2" contenteditable="false">I walk with Jesus</div>
-    </div>
+  <iframe id="container" src="./frame.html" scrolling="no">
+    <p>Your browser does not support iframes.</p>
+  </iframe>
+  <br>
+  <button id="download-button">Download</button>
 
-    <script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="scripts.js"></script>
 </body>
 </html>
