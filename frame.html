@@ -4,26 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Overlayer</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
   <div id="frame-container">
     <div id="background-element">&nbsp;</div>
-    <img class="movable-element image-main" id="main-image" src="jesus-2.jpg" draggable="false" />
+    <img class="movable-element image-main" id="main-image" src="./images/jesus-2.jpg" draggable="false" />
     <div class="movable-element straight-text" id="jesus-text" type="text" contenteditable="false">I am a Child of God</div>
     <div class="movable-element curly-text" id="name-text" type="text" contenteditable="false">Safari</div>
   </div>
 
   <div id="menu-list">
       <div class="menu-button-container">
+        <button class="menu-button" id="menu-button-new" onclick="document.getElementById('menu-file').click()">New</button>
         <button class="menu-button" id="menu-button-edit" onclick="menuButtonEditClick()">Edit</button>
         <button class="menu-button" id="menu-button-save" onclick="menuButtonSaveClick()">Save</button>
+        <button class="menu-button" id="menu-button-lock" onclick="menuButtonLockClick()">Lock axis:</button>
+        <button class="menu-button" id="menu-button-center" onclick="menuButtonCenterClick()">Centered:</button>
+        <button class="menu-button" id="menu-button-font" onclick="menuButtonFontClick()">Font:</button>
         <input  class="menu-button" id="menu-file" type="file"/>
-        <button class="menu-button" id="menu-button-new" onclick="document.getElementById('menu-file').click()">New</button>
         <input  class="menu-button slider" id="menu-slider" type="range" min="5" max="100" value="50"></input>
       </div>
   </div>
 
-  <script src="scripts-frame.js"></script>
+  <script src="./scripts/scripts-frame.js"></script>
 </body>
 </html>

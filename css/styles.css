@@ -29,7 +29,6 @@ h1 {
   background-color:rgba(0, 0, 0, 0);
   outline:none;
   font-size:50px;
-  font-family:'Brush Script MT';
   white-space: nowrap;
   text-align: center;
   color:#3172c2;
@@ -40,7 +39,6 @@ h1 {
   background-color:rgba(0, 0, 0, 0);
   outline:none;
   font-size:35px;
-  font-family:'Garamond';
   white-space: nowrap;
   text-align: center;
   min-width: 40px;
@@ -67,16 +65,14 @@ iframe {
   cursor: pointer;
 }
 #menu-list {
-	display:none; 
-	align-items:center;
-
   top: 200px;
   position: absolute;
   background-color: #FFF;
-  height: 140px;
-  width: 150px;
   border-radius: 10px;
   transition-duration: 1s;
+  display:none; 
+	align-items:center;
+
 }
 .menu-button-container {
   flex-basis: 100%;
@@ -148,4 +144,21 @@ input[type="file"] {
   width: 100%;
   top: 0px;
   left: 0px;
+}
+
+
+
+
+
+@font-face {
+    font-family: 'Marcellus';
+    src: url('./fonts/marcellus.ttf');
+}
+@font-face {
+    font-family: 'Black-Mango';
+    src: url('./fonts/black-mango.ttf');
+}
+@font-face {
+    font-family: 'Brush-Script';
+    src: url('./fonts/brush-script.ttf');
 }

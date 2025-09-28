@@ -13,7 +13,7 @@ menuSlider.oninput = menuSliderScale;
 const menuFile = document.getElementById("menu-file");
 menuFile.addEventListener("change", menuButtonNewClick);
 
-const menuHeight = 180;
+const menuHeight = 300;
 const menuWidth = 200;
 menuList.style.height = menuHeight + "px";
 menuList.style.width = menuWidth + "px";
@@ -179,6 +179,10 @@ class Dr {
 const menuButtonEdit = document.getElementById("menu-button-edit");
 const menuButtonSave = document.getElementById("menu-button-save");
 const menuButtonNew = document.getElementById("menu-button-new");
+const menuButtonLock = document.getElementById("menu-button-lock");
+const menuButtonCenter = document.getElementById("menu-button-center");
+const menuButtonFont = document.getElementById("menu-button-font");
+
 
 function menuButtonHide() {
     if (menuList.style.display != "none") {
@@ -191,11 +195,18 @@ function menuButtonHide() {
         menuButtonSave.disabled = true;
     }  
 }
+
 function menuButtonShow(e) {
-    console.log("menuButtonShow", targetElement);
+    console.log("menuButtonShow", targetElement, menuButtonLock);
     menuList.style.display = "flex";
     menuList.style.left = (e.clientX-5) + "px";
     menuList.style.top = (e.clientY-5) + "px";
+
+    menuButtonLock.textContent = "Lock axis: " + targetElement.lockAxis;
+    menuButtonCenter.textContent = "Centered: " + targetElement.centered;
+    menuButtonFont.textContent = "Font: " + (targetElement.elmnt.style.fontFamily ? targetElement.elmnt.style.fontFamily : undefined);
+
+
     if (targetElement.elmnt.style.borderColor == colorZero) {
         targetElement.elmnt.style.borderColor = colorRed;
     }
@@ -219,14 +230,26 @@ function menuButtonShow(e) {
                 menuButtonEdit.disabled = true;
                 menuButtonSave.disabled = true;
                 menuButtonNew.disabled = false;
+                menuButtonLock.disabled = true;
+                menuButtonCenter.disabled = true;
+                menuButtonFont.disabled = true;
+                menuSlider.disabled = true;
             } else if (targetElement.elmnt.contentEditable == "true") {
                 menuButtonEdit.disabled = true;
                 menuButtonSave.disabled = false;
                 menuButtonNew.disabled = true;
+                menuButtonLock.disabled = false;
+                menuButtonCenter.disabled = false;
+                menuButtonFont.disabled = false;
+                menuSlider.disabled = false;
             } else {
                 menuButtonEdit.disabled = false;
                 menuButtonSave.disabled = true;
                 menuButtonNew.disabled = true;
+                menuButtonLock.disabled = false;
+                menuButtonCenter.disabled = false;
+                menuButtonFont.disabled = false;
+                menuSlider.disabled = false;
             }
             break;
         case "IMG":
@@ -234,6 +257,10 @@ function menuButtonShow(e) {
             menuButtonEdit.disabled = false;
             menuButtonSave.disabled = true;
             menuButtonNew.disabled = true;
+            menuButtonLock.disabled = false;
+            menuButtonCenter.disabled = false;
+            menuButtonFont.disabled = true;
+            menuSlider.disabled = false;
             break;
     }
 }
@@ -286,6 +313,62 @@ function menuButtonNewClick() {
     }
 }
 
+function menuButtonLockClick() {
+    console.log("Lock");
+
+    switch(targetElement.lockAxis) {
+        case "vertical":
+            targetElement.lockAxis = "horizontal";
+            break;
+        case "horizontal":
+            targetElement.lockAxis = "none";
+            break;
+        case "none":
+            targetElement.lockAxis = "vertical";
+            break;
+    }
+    menuButtonLock.textContent = "Lock axis: " + targetElement.lockAxis;
+}
+
+function menuButtonCenterClick() {
+    console.log("Center");
+
+    switch(targetElement.centered) {
+        case "vertical":
+            targetElement.centered = "horizontal";
+            break;
+        case "horizontal":
+            targetElement.centered = "both";
+            break;
+        case "both":
+            targetElement.centered = "vertical";
+            break;
+    }
+    targetElement.centerElement();
+    menuButtonCenter.textContent = "Centered: " + targetElement.centered;
+}
+
+function menuButtonFontClick() {
+    console.log("Font", targetElement.elmnt.style.fontFamily);
+
+    switch(targetElement.elmnt.style.fontFamily) {
+        case "Marcellus":
+            targetElement.elmnt.style.fontFamily = "Black-Mango";
+            break;
+        case "Black-Mango":
+            targetElement.elmnt.style.fontFamily = "Garamond";
+            break;
+        case "Garamond":
+            targetElement.elmnt.style.fontFamily = "Brush-Script";
+            break;
+        case "Brush-Script":
+            targetElement.elmnt.style.fontFamily = "Marcellus";
+            break;
+    }
+    targetElement.centerElement();
+    menuButtonFont.textContent = "Font: " + targetElement.elmnt.style.fontFamily;
+}
+
 function menuSliderScale() {
     switch(targetElement.elmnt.nodeName) {
         case "DIV":
@@ -314,6 +397,8 @@ allDocs.forEach(el => {
 
 allDocsNew["main-image"].lockAxis = "vertical";
 allDocsNew["jesus-text"].lockAxis = "vertical";
+allDocsNew["jesus-text"].elmnt.style.fontFamily = "Marcellus";
 allDocsNew["name-text"].lockAxis = "vertical";
+allDocsNew["name-text"].elmnt.style.fontFamily = "Marcellus";
 allDocsNew["name-text"].elmnt.style.fontSize = "55px";
 allDocsNew["name-text"].centerElement();
