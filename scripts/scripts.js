@@ -1,7 +1,11 @@
 const iframe = document.getElementById("container");
-const button = document.getElementById("download-button");
+const buttonDownload = document.getElementById("download-button");
+const buttonFullscreen = document.getElementById("fullscreen-button");
 
-button.addEventListener("click", () => {
+buttonDownload.addEventListener("click", downloadRender); 
+buttonFullscreen.addEventListener("click", toggleFullScreen); 
+
+function downloadRender() {
   const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
   const target = iframeDoc.body;
 
@@ -21,4 +25,11 @@ button.addEventListener("click", () => {
   baclgroundElement.style.background = "repeating-linear-gradient(45deg, #FFF 25%, #FFF 50%, #EEE 50%, #EEE 75%)";
   baclgroundElement.style.backgroundSize = "30px 30px";
 
-});
+}
+
+function toggleFullScreen() {
+    // Get your full screen element
+    const video = iframe;
+    const rfs = video.requestFullscreen || video.webkitRequestFullScreen || video.mozRequestFullScreen || video.msRequestFullscreen;
+    rfs.call(video);
+}

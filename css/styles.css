@@ -51,7 +51,7 @@ iframe {
   border-style: outset;
   user-select: none;
 }
-#download-button {
+.tool-button {
   margin-left: 20px;
   background-color: #FFF;
   border-width: 3px;
@@ -59,7 +59,7 @@ iframe {
   border-style: outset;
   transition-duration: 0.2s;
 }
-#download-button:hover {
+.tool-button:hover {
   background-color: #f6f6f6;  
   border-style: inset;
   cursor: pointer;
