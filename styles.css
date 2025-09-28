@@ -21,27 +21,29 @@ h1 {
   border-color: rgba(0, 0, 0, 0);
 }
 .image-main {
-  width:450px;
+  width:400px;
   height: auto;
 }
 .curly-text {
   position: absolute;
   background-color:rgba(0, 0, 0, 0);
   outline:none;
-  font-size:54px;
+  font-size:50px;
   font-family:'Brush Script MT';
   white-space: nowrap;
   text-align: center;
   color:#3172c2;
+  min-width: 40px;
 }
 .straight-text {
   position: absolute;
   background-color:rgba(0, 0, 0, 0);
   outline:none;
-  font-size:34px;
+  font-size:35px;
   font-family:'Garamond';
   white-space: nowrap;
   text-align: center;
+  min-width: 40px;
 }
 iframe {
   height: 750px;
@@ -122,3 +124,28 @@ iframe {
 }
 .slider:focus { outline: none; }
 .slider:active { opacity: 1; }
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+#background-element {
+  position:absolute;
+  /* background-color: #FFF; */
+  background: repeating-linear-gradient(
+    45deg,
+    #FFF 25%,
+    #FFF 50%,
+    #EEE 50%,
+    #EEE 75%
+  );
+  background-size: 30px 30px;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
